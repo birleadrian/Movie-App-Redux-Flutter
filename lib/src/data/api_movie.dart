@@ -5,6 +5,7 @@ import 'package:movie_app_redux/src/model/index.dart';
 
 class ApiMovie {
   const ApiMovie(this._client);
+
   static const String url = 'https://yts.mx/api/v2/list_movies.json';
   final Client _client;
 

@@ -10,15 +10,13 @@ class AppEpics {
   final ApiMovie _apiMovie;
 
   Epic<AppState> get epic {
-    return combineEpics(<Epic<AppState>>[
-      TypedEpic<AppState,GetMovieStart>(_getMovieStart)
-    ]);
+    return combineEpics(<Epic<AppState>>[TypedEpic<AppState, GetMovieStart>(_getMovieStart)]);
   }
 
   Stream<dynamic> _getMovieStart(Stream<GetMovieStart> actions, EpicStore<AppState> store) {
     return actions
         .asyncMap((GetMovieStart action) => _apiMovie.getMovies(action.page))
         .map((List<Movie> movies) => GetMovie.successful(movies))
-    .onErrorReturnWith((Object error, StackTrace stackTrace) => GetMovie.error(error,stackTrace));
+        .onErrorReturnWith((Object error, StackTrace stackTrace) => GetMovie.error(error, stackTrace));
   }
 }
