@@ -7,4 +7,3 @@ part 'get_movies.dart';
 part 'set_selected_movie.dart';
 
 part 'index.freezed.dart';
-
